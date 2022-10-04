@@ -2,11 +2,11 @@
 
 ## Task
 1. Implement MC-Epsilon Greedy and compare it with MC-Exploring Start.
-2. In this regard, change the example slide 31 so that from s13 a drone can take our robot to s1, 
+2. In this regard, from s13 a drone can take our robot to s1, 
 and from s9 same drone can take it to s6. (note that you need to add a new action called fly).
 
 ## Code Explain
-### Implement MC-Epsilon Greedy  
+### Implement MC-Epsilon Greedy - Monte_Carlo_Algorithm.py
 The main difference between class “MC_Exploring_Start” and class “MC_Epsilon_Greedy” 
 in my code is function “policy” part. 
 
@@ -32,8 +32,7 @@ then we will get closer range between MC Exploring Start and MC Epsilon Greedy.
 ![epsilon 0.1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6450ef6d-b24a-441a-83d4-4fec1080b24e/epsilon_01.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221004T161016Z&X-Amz-Expires=86400&X-Amz-Signature=47204babbfe331a3f0c6ee23824c7f25f200a1832113883a02f6bd4e53b1881e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22epsilon_01.png%22&x-id=GetObject)
 ![epsilon 0.01](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/120790c7-730a-46c2-b066-a43145e7fe2a/epsilon_001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221004T161019Z&X-Amz-Expires=86400&X-Amz-Signature=338adb321b20dd8ace23bbc49652962187b1b57f062758067ac02732a4852bc8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22epsilon_001.png%22&x-id=GetObject)
 
-### Add drone
-
+### Add drone - MC_with_drone.py
 First, added “fly” action into action dictionary, 
 with [0, 0] value (later will give it different value based on different state, s9 or s13).  
 
