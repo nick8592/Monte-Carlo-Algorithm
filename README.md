@@ -8,17 +8,17 @@
 ## Code Explain
 ### Implement MC-Epsilon Greedy - Monte_Carlo_Algorithm.py
 The main difference between class `MC_Exploring_Start` and class `MC_Epsilon_Greedy` 
-in my code is function `policy` part. 
+in my code is function `iter` part. 
 
-After we get the `valid_actions` list for the current state coordinate, 
+After we use `generate_inital_state` and have the current state coordinate, 
 I added an `if...else...` statement and parameter `EPSILON` to implement Epsilon Greedy concept. 
 Parameter `EPSILON` defined as 0.1.
 By using `random()` function to generate a float number between 0 and 1, 
 for example let’s call it `rand_num`. 
  - If `rand_num` is **bigger** than the `EPSILON`,   
-then choose the action which had maximum value in this state.  
+then remain with current action.  
  - If `rand_num` is **smaller** than the `EPSILON`,   
-randomly choose an action from `valid_actions`.  
+use `generate_random_action` randomly choose an action.  
 
 And the final optimal policy also shown as below.  
 
@@ -27,12 +27,16 @@ And the final optimal policy also shown as below.
 By doing so, we can see the converged result from the figure shown below. 
 Compare `MC Epsilon Greedy` with `MC Exploring Start`, 
 MC Epsilon Greedy has 10% chance to randomly select an action, 
-so its line on chart is less compact to MC Exploring Start. 
-If we decrease the EPSILON to 0.01, which means 1% chance to randomly select an action, 
-then we will get closer range between MC Exploring Start and MC Epsilon Greedy.  
+as you can see its line on chart greadually close to MC Exploring Start. 
+If we decrease the EPSILON to 0.01, which means only 1% chance to randomly select an action, 
+then MC Epsilon Greedy has less chance to take reandom action, which cause it need more iteration to converge.
+Below shows when `EPSILON` equals to 0.01, 0.1, 0.5, 0.9.
 
-![epsilon 0.1](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/6450ef6d-b24a-441a-83d4-4fec1080b24e/epsilon_01.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221004T161016Z&X-Amz-Expires=86400&X-Amz-Signature=47204babbfe331a3f0c6ee23824c7f25f200a1832113883a02f6bd4e53b1881e&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22epsilon_01.png%22&x-id=GetObject)
-![epsilon 0.01](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/120790c7-730a-46c2-b066-a43145e7fe2a/epsilon_001.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221004T161019Z&X-Amz-Expires=86400&X-Amz-Signature=338adb321b20dd8ace23bbc49652962187b1b57f062758067ac02732a4852bc8&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22epsilon_001.png%22&x-id=GetObject)
+![epsilon 0.01](https://drive.google.com/file/d/1IuQES-3WZdJEZRRp6ozS9hujbWI6H-WJ/view?usp=sharing)
+![epsilon 0.1](hhttps://drive.google.com/file/d/1ogdbMvaR4l6-mEnYWosFuSGgfsaLikZr/view?usp=sharing)
+![epsilon 0.5](https://drive.google.com/file/d/1WB-c24pTYz15CbdfvIcanCuowf-KgtMw/view?usp=sharing)
+![epsilon 0.9](https://drive.google.com/file/d/13z1fun9raMTigpBGyGvYrkQVqwm3o2A7/view?usp=sharing)
+
 
 ### Add drone - MC_with_drone.py
 First, added `fly` action into action dictionary, 
