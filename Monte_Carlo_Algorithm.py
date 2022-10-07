@@ -14,7 +14,7 @@ random.seed(9527)
 MAX_ITERATION = 15000
 MAX_EPISODE_LENGTH = 10
 DISCOUNT_FACTOR = 0.9
-EPSILON = 0.1
+EPSILON = 0.9
 
 class Environment():
     def __init__(self):
@@ -206,24 +206,18 @@ class MC_Epsilon_Greedy():
         state_coordinate = np.array(state_coordinate)
         indexes = []
         for action in self.env.action_dict.keys():
-            # if state coordinate == next state coordinate, \
-            # which means the action is invalid cause "transfer_state" return the same coordinate
-            if not (state_coordinate == self.env.transfer_state(state_coordinate, action)).all(): 
+            # if state coordinate == next state coordinate, which means the action is invalid cause "transfer_state" return the same coordinate
+            if not (state_coordinate == self.env.transfer_state(np.array(state_coordinate), action)).all():
                 valid_actions.append(action)
 
-        if np.random.random() > EPSILON: # exploit
-            for valid_action in valid_actions:
-                Q_value.append(self.Q_values[(tuple(state_coordinate), valid_action)])
-            max_value = max(Q_value)
-            
-            for valid_action in valid_actions:
-                if max_value == self.Q_values[(tuple(state_coordinate), valid_action)]:
-                    indexes.append(self.env.action_to_number[valid_action])
-            return self.env.direction_dict[random.choice(indexes)]
-        else: # explore
-            for valid_action in valid_actions:
+        for valid_action in valid_actions:
+            Q_value.append(self.Q_values[(tuple(state_coordinate), valid_action)])
+        max_value = max(Q_value)
+
+        for valid_action in valid_actions:
+            if max_value == self.Q_values[(tuple(state_coordinate), valid_action)]:
                 indexes.append(self.env.action_to_number[valid_action])
-            return self.env.direction_dict[random.choice(indexes)]
+        return self.env.direction_dict[random.choice(indexes)]
 
 
     def print_Qvalue(self, state_coordinate): #For debugging
@@ -237,7 +231,11 @@ class MC_Epsilon_Greedy():
             episode = []
             sum_of_Q_value = 0
             self.current_state_coordinates = self.generate_initial_state()
-            action = self.generate_random_action()
+            if np.random.random() > EPSILON: # exploit
+                action = self.policy(self.current_state_coordinates)
+            else: # explore
+                action = self.generate_random_action()
+
             for h in range(self.Horizon): #Generate episode
                 next_state_coordinates = self.env.transfer_state(self.current_state_coordinates, action)
                 reward = -1
@@ -329,11 +327,3 @@ if __name__ == "__main__":
     plt.legend()
     plt.show()   
     
-
-
-
-
-
-
-
-
