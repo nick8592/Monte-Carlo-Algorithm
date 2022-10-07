@@ -3,7 +3,8 @@
 ## Task
 1. Implement MC-Epsilon Greedy and compare it with MC-Exploring Start.
 2. From s13 a drone can take our robot to s1, and from s9 same drone can take it to s6. (note that you need to add a new action called fly).
-![map](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/cd290c85-f08f-491c-ada4-e4cacc2f77d7/Untitled.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221004T163207Z&X-Amz-Expires=86400&X-Amz-Signature=4fad5df0c8c477dca2373063f6d17cd1e23aaffd1060bca1d3c6eaa0842f2215&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22Untitled.png%22&x-id=GetObject)
+
+![map](https://user-images.githubusercontent.com/56616275/194511983-ba696c89-23ec-40d3-a241-d25349ac6fcf.png)
 
 ## Code Explain
 ### Implement MC-Epsilon Greedy - Monte_Carlo_Algorithm.py
