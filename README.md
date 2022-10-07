@@ -22,7 +22,7 @@ use `generate_random_action` randomly choose an action.
 
 And the final optimal policy also shown as below.  
 
-![optimal policy](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/8bf02770-8927-4b29-981a-1c2aed1e2c91/optimal_policy.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221004T160901Z&X-Amz-Expires=86400&X-Amz-Signature=4e54e27cfe12e73e37867668bc4b15910c54fc739d156356bdf0dc207e993855&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22optimal_policy.png%22&x-id=GetObject)
+![optimal_policy](https://user-images.githubusercontent.com/56616275/194511792-97ebd24f-d0cd-4dc3-93db-7b26dce6bc70.png)
 
 By doing so, we can see the converged result from the figure shown below. 
 Compare `MC Epsilon Greedy` with `MC Exploring Start`, 
@@ -32,11 +32,10 @@ If we decrease the EPSILON to 0.01, which means only 1% chance to randomly selec
 then MC Epsilon Greedy has less chance to take reandom action, which cause it need more iteration to converge.
 Below shows when `EPSILON` equals to 0.01, 0.1, 0.5, 0.9.
 
-![epsilon 0.01](https://drive.google.com/file/d/1IuQES-3WZdJEZRRp6ozS9hujbWI6H-WJ/view?usp=sharing)
-![epsilon 0.1](hhttps://drive.google.com/file/d/1ogdbMvaR4l6-mEnYWosFuSGgfsaLikZr/view?usp=sharing)
-![epsilon 0.5](https://drive.google.com/file/d/1WB-c24pTYz15CbdfvIcanCuowf-KgtMw/view?usp=sharing)
-![epsilon 0.9](https://drive.google.com/file/d/13z1fun9raMTigpBGyGvYrkQVqwm3o2A7/view?usp=sharing)
-
+![epsilon_0 01](https://user-images.githubusercontent.com/56616275/194511577-cd362bf2-3301-42d2-91a9-0636018f6592.png)
+![epsilon_0 1](https://user-images.githubusercontent.com/56616275/194511663-5b34b813-feb1-400a-89ac-d7c9c19673c9.png)
+![epsilon_0 5](https://user-images.githubusercontent.com/56616275/194511708-ff8f2a1e-f307-445e-b412-7cd75a3d97f1.png)
+![epsilon_0 9](https://user-images.githubusercontent.com/56616275/194511734-114e64ee-512f-4ac0-92f8-f6703913238b.png)
 
 ### Add drone - MC_with_drone.py
 First, added `fly` action into action dictionary, 
@@ -80,5 +79,4 @@ The optimal policy is shown below, at state `s9[1, 3]` and `s13[2, 4]` both will
 Even `s10[1, 5]` and `s18[3, 3]` also influence by `s13`, 
 both of the actions are try to go to state s13 for shorter route.   
 
-![optimal_policy_with_drone](https://s3.us-west-2.amazonaws.com/secure.notion-static.com/a4f12674-a698-4cbe-8c8e-8f2fdbde301c/optimal_policy_with_drone.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=AKIAT73L2G45EIPT3X45%2F20221004%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20221004T162113Z&X-Amz-Expires=86400&X-Amz-Signature=c4a8663fdd20ed91279497081b5dc99426cda1d250a61afd357dcb4aed7112a5&X-Amz-SignedHeaders=host&response-content-disposition=filename%20%3D%22optimal_policy_with_drone.png%22&x-id=GetObject)
-
+![optimal_policy_with_drone](https://user-images.githubusercontent.com/56616275/194511846-2c4d3a97-2ecf-4304-ab5e-8e1aa2480290.png)
